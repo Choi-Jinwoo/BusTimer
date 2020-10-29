@@ -1,0 +1,76 @@
+﻿<Window x:Class="BusTimer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BusTimer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        SizeChanged="Window_SizeChanged">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="1"
+                    BorderThickness="0,0,0,1"
+                    BorderBrush="Black">
+                <Canvas x:Name="cvBusPosition"
+                        VerticalAlignment="Center"
+                        Background="#e0e0e0">
+                    <Canvas x:Name="cvBusWrapper"
+                            VerticalAlignment="Bottom"
+                            Width="50"
+                            Height="60">
+                        <Image Source="Assets/bus_pos.png"
+                               VerticalAlignment="Bottom"
+                               Width="50"
+                               Height="60" />
+                    </Canvas>
+                </Canvas>
+                
+            </Border>
+
+            <TextBlock Text="정류장 도착"
+                       HorizontalAlignment="Left"
+                       Grid.Column="2"
+                       VerticalAlignment="Bottom"
+                       FontSize="18"
+                       FontWeight="Bold"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <TextBlock x:Name="tbLeaveTime"
+                           FontSize="48"
+                           Text="계산중"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+                <TextBlock Text="에 출발하세요"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           TextAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <TextBlock x:Name="tbLeftTime"
+                       Text="계산중"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</Window>
