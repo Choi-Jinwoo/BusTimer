@@ -65,7 +65,20 @@
         </Grid>
 
         <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
             <TextBlock x:Name="tbLeftTime"
+                       Grid.Row="0"
+                       Text="계산중"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"/>
+            <TextBlock x:Name="tbDaegokArriveTime"
+                       Grid.Row="1"
                        Text="계산중"
                        FontSize="24"
                        FontWeight="Bold"

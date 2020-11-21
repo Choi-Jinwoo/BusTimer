@@ -64,7 +64,10 @@ namespace BusTimer
 
             TimeSpan leftTime = currentBusStartDateTime.Subtract(now);
 
+            DateTime busArriveDaegokDateTime = startDateTime.AddSeconds(GetRequireSecondToDaegok());
+
             tbLeftTime.Text = string.Format("버스 도착까지 {0}분 {1}초 남았습니다", leftTime.Minutes, leftTime.Seconds);
+            tbDaegokArriveTime.Text = $"{busArriveDaegokDateTime.ToString("HH:mm:ss")}에 대곡역에 도착합니다";
 
             // 버스 애니메이션
             double leftSeconds = leftTime.Minutes * 60 + leftTime.Seconds;
@@ -81,6 +84,13 @@ namespace BusTimer
         {
             double distanceKM = Setting.DISTANCE_M / 1000.0;
             int requireSecond = Convert.ToInt32((distanceKM / Setting.SPEED_KM_PER_H) * 3600);
+
+            return requireSecond;
+        }
+        private int GetRequireSecondToDaegok()
+        {
+            double distanceKM = Setting.DISTANCE_TO_DAEGOK_KM;
+            int requireSecond = Convert.ToInt32(((double)distanceKM / Setting.BUS_SPEED_KM_PER_H) * 3600);
 
             return requireSecond;
         }
