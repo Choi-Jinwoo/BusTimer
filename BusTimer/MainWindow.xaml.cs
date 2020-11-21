@@ -45,11 +45,24 @@ namespace BusTimer
         private void BusTimer_Tick(object sender, EventArgs e)
         {
             DateTime now = DateTime.Now;
+
+            // 버스 출발 시간
             DateTime startDateTime = GetBusStartTime(now);
+            DateTime currentBusStartDateTime = startDateTime;
+
+            // 출발해야하는 시간
             DateTime leaveTime = startDateTime.AddSeconds(-requireSecond);
+
+            // 이미 버스를 놓친 경우
+            if (DateTime.Compare(now, leaveTime) > 0)
+            {
+                startDateTime = startDateTime.AddMinutes(20);
+                leaveTime = startDateTime.AddSeconds(-requireSecond);
+            }
+
             tbLeaveTime.Text = leaveTime.ToString("HH:mm:ss");
 
-            TimeSpan leftTime = startDateTime.Subtract(now);
+            TimeSpan leftTime = currentBusStartDateTime.Subtract(now);
 
             tbLeftTime.Text = string.Format("버스 도착까지 {0}분 {1}초 남았습니다", leftTime.Minutes, leftTime.Seconds);
 
